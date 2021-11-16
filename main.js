@@ -5,6 +5,7 @@ leftWristY=0;
 rightWristX=0;
 rightWristY=0;
 leftWristScore=0;
+rightWristScore=0;
 song_status="";
 song2_status="";
 function preload()
@@ -52,6 +53,22 @@ function draw()
 
             document.getElementById("song").innerHTML = "in the hall of the mountain king"
         }
+        
+    }
+
+    if(rightWristScore >0.2)
+    {
+        circle(rightWristX, rightWristY, 20)
+
+        song.stop();
+
+        if(song2_status==false)
+        {
+            song2.play();
+
+            document.getElementById("song").innerHTML = "gornios Theme"
+        }
+        
     }
 
 
@@ -76,6 +93,7 @@ rightWristX=results[0].pose.rightWrist.x;
 rightWristY=results[0].pose.rightWrist.y;
 console.log("rightWristX = " + rightWristX + "rightWristY = " + rightWristY);
 leftWristScore = results[0].pose.keypoints[9].score;
+rightWristScore = results[0].pose.keypoints[10].score;
 
    } 
 }
